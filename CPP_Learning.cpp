@@ -1,8 +1,10 @@
 #include <iostream>
 #include "Lesson.h"
 #include "LessonManager.h"
+#include "utils.h"  // Importing typeWithDelay
 
 void initializeLesson1();
+void initializeLessonBsod();
 
 using namespace std;
 
@@ -10,35 +12,43 @@ vector<Lesson*> LessonManager::lessons;
 
 int main() {
     initializeLesson1();
+    initializeLessonBsod();
 
-    int lessonNumber = 1;
+    unsigned int lessonNumber = 1;
     const int totalLessons = LessonManager::getLessonsCount();  // Update this as you add more lessons
 
-
     while (lessonNumber != 0) {
-        cout << "\n\nWhich lesson do you want to choose? (Enter number from 1 to " << totalLessons - 1 << " or 0 to exit): ";
+        typeWithDelay("\n\nWhich lesson do you want to choose? (Enter number from 1 to " + to_string(totalLessons - 1) + " or 0 to exit): ");
         cin >> lessonNumber;
 
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Ignore the rest of the input
-            cout << "Invalid input. Please enter a valid number." << endl;
-            continue; 
+            typeWithDelay("Invalid input. Please enter a valid number.\n");
+            continue;
         }
 
         if (lessonNumber == 0) {
-            cout << "\n\nExiting program..." << endl;
+            typeWithDelay("\n\nExiting program...\n");
             continue;
         }
 
         // Check if input is within the valid range
         if (lessonNumber < 0 || lessonNumber >= totalLessons) {
-            cout << "Invalid lesson number. Please enter a number between 1 and " << totalLessons - 1 << "." << endl;
+            typeWithDelay("Invalid lesson number. Please enter a number between 1 and " + to_string(totalLessons - 1) + ".\n");
             continue;
         }
 
-        // Call the selected lesson function
-        LessonManager::getLessons()[lessonNumber - 1]->run();
+        // Store the adjusted index in a signed variable to avoid unsigned overflow
+        int lessonIndex = static_cast<int>(lessonNumber) - 1;
+
+        // Safely call the selected lesson function
+        if (lessonIndex >= 0 && lessonIndex < static_cast<int>(LessonManager::getLessons().size())) {
+            LessonManager::getLessons()[lessonIndex]->run();
+        }
+        else {
+            typeWithDelay("Unexpected error: Lesson index out of bounds.\n");
+        }
     }
 
     // Cleanup to avoid memory leaks
