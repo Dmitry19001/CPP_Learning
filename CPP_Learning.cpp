@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Lesson.h"
 #include "LessonManager.h"
-#include "utils.h"  // Importing typeWithDelay
+#include "utils.h"
 
 void initializeLesson1();
 void initializeLessonBsod();
@@ -14,28 +14,31 @@ int main() {
     initializeLesson1();
     initializeLessonBsod();
 
+    int typeDelay = 10;
     unsigned int lessonNumber = 1;
     const int totalLessons = LessonManager::getLessonsCount();  // Update this as you add more lessons
 
     while (lessonNumber != 0) {
-        typeWithDelay("\n\nWhich lesson do you want to choose? (Enter number from 1 to " + to_string(totalLessons - 1) + " or 0 to exit): ");
+        string choicePrompt = "\n\nWhich lesson do you want to choose? (Enter number from 1 to " + to_string(totalLessons - 1) + " or 0 to exit): ";
+        typeWithDelay(choicePrompt, typeDelay);
         cin >> lessonNumber;
 
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Ignore the rest of the input
-            typeWithDelay("Invalid input. Please enter a valid number.\n");
+            typeWithDelay("Invalid input. Please enter a valid number.\n", typeDelay);
             continue;
         }
 
         if (lessonNumber == 0) {
-            typeWithDelay("\n\nExiting program...\n");
+            typeWithDelay("\n\nExiting program...\n", typeDelay);
             continue;
         }
 
         // Check if input is within the valid range
         if (lessonNumber < 0 || lessonNumber >= totalLessons) {
-            typeWithDelay("Invalid lesson number. Please enter a number between 1 and " + to_string(totalLessons - 1) + ".\n");
+            string invalidRangePrompt = "Invalid lesson number. Please enter a number between 1 and " + to_string(totalLessons - 1) + ".\n";
+            typeWithDelay(invalidRangePrompt, typeDelay);
             continue;
         }
 
@@ -47,7 +50,7 @@ int main() {
             LessonManager::getLessons()[lessonIndex]->run();
         }
         else {
-            typeWithDelay("Unexpected error: Lesson index out of bounds.\n");
+            typeWithDelay("Unexpected error: Lesson index out of bounds.\n", typeDelay);
         }
     }
 

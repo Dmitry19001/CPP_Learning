@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include "utils.h"
 
 using namespace std;
 
@@ -21,7 +22,7 @@ public:
             execute();
         }
         else {
-            cout << "No function assigned to execute." << endl;
+            typeWithDelay("No function assigned to execute.");
         }
     }
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Lesson.h"
 #include "LessonManager.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -9,13 +10,13 @@ static int _getValidAge() {
     // Do not use self recursion, could cause stack overflow in complex scenarios
     int age;
     while (true) {
-        cout << "Enter your age: " << endl;
+        typeWithDelay("Enter your age:\n");
         cin >> age;
 
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input. Please enter a valid numerical age." << endl;
+            typeWithDelay("Invalid input. Please enter a valid numerical age.\n");
         }
         else {
             break;
@@ -29,14 +30,16 @@ static void _runLesson1() {
     string name = "Unknown";
     int age = 0;
 
-    cout << "This is Lesson 1: C++ Basics and Setup" << endl;
-    cout << "Enter your name:" << endl;
+    typeWithDelay("This is Lesson 1: C++ Basics and Setup\n");
+    typeWithDelay("Enter your name:\n");
     cin >> name;
 
     // Get a valid age
     age = _getValidAge();
 
-    cout << "Hello, " << name << "! You are " << age << " years old." << endl;
+    // Construct the greeting message
+    string greeting = "Hello, " + name + "! You are " + to_string(age) + " years old.\n";
+    typeWithDelay(greeting);
 }
 
 // Initialization function for Lesson 1
