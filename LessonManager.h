@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include "utils.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ public:
     // Add a lesson to the collection
     static void addLesson(Lesson* lesson) {
         lessons.push_back(lesson);
+        printWithDelay(lesson->getName() + " loaded successfully\n", 5);
     }
 
     // Get all lessons
