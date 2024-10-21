@@ -130,6 +130,7 @@
     <ClCompile Include="bsod.cpp" />
     <ClCompile Include="CPP_Learning.cpp" />
     <ClCompile Include="Lesson1.cpp" />
+    <ClCompile Include="Lesson2.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
