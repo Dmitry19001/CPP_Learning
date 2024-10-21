@@ -22,7 +22,7 @@ public:
             execute();
         }
         else {
-            typeWithDelay("No function assigned to execute.");
+            printWithDelay("No function assigned to execute.");
         }
     }
 
