@@ -155,7 +155,7 @@ static void drawBsod() {
 }
 
 static void _runLessonBsod() {
-    typeWithDelay("Initializing\nTesting delaying text...\nError...");
+    printWithDelay("Initializing\nTesting delaying text...\nError...");
     this_thread::sleep_for(chrono::milliseconds(1000)); // Delay
     drawBsod();
 }
@@ -163,6 +163,6 @@ static void _runLessonBsod() {
 // Initialization function for Lesson BSOD
 void initializeLessonBsod() {
     // Create the lesson and add it to LessonManager
-    Lesson* lessonBsod = new Lesson("Lesson delayed typing starting...", _runLessonBsod);
+    Lesson* lessonBsod = new Lesson("FUN: Fake bsod", _runLessonBsod);
     LessonManager::addLesson(lessonBsod);
 }
