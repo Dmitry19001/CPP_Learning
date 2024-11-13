@@ -17,7 +17,7 @@ Create a basic "Hello World" program, focusing on C++ syntax.
 Learn about different variable types, including primitive types (int, float, char, bool).
 Understand arithmetic and logical operators.
 ### Assignment:
-- [ ] Write a program that takes two integer inputs from the user and performs the basic arithmetic operations (+, -, *, /). Display the results in a readable format.
+- [x] Write a program that takes two integer inputs from the user and performs the basic arithmetic operations (+, -, *, /). Display the results in a readable format.
 
 ## Lesson 3: Control Flow and Functions
 ### Learning Objectives:
