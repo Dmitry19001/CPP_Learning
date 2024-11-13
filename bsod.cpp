@@ -8,7 +8,6 @@
 #include <gdiplus.h> 
 #include "utils.h"
 
-using namespace std;
 using namespace Gdiplus;  // Use GDI+ namespace
 
 #pragma comment (lib,"Gdiplus.lib")  // Link GDI+ library
@@ -57,7 +56,7 @@ static LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPAR
         rect.top += 300;
 
         // Create a message for the fake BSOD
-        wstring bsodMessage =
+        std::wstring bsodMessage =
             L"Радик, тут в общем сообщение об твоем поздравлении с др.\n"
             L"С др крч!\n\n";
 
@@ -81,7 +80,7 @@ static LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPAR
         SelectObject(hdc, hSmallFont);
 
         // Create a message for the fake BSOD
-        wstring bsodAdditionalMessage =
+        std::wstring bsodAdditionalMessage =
             L"Для дополнительной информации и возможных исправлений посетите https://natribu.org/\n\n"
             L"Еще раз с др!\n\n";
 
@@ -156,13 +155,13 @@ static void drawBsod() {
 
 static void _runLessonBsod() {
     printWithDelay("Initializing\nTesting delaying text...\nError...");
-    this_thread::sleep_for(chrono::milliseconds(1000)); // Delay
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000)); // Delay
     drawBsod();
 }
 
 // Initialization function for Lesson BSOD
 void initializeLessonBsod() {
     // Create the lesson and add it to LessonManager
-    Lesson* lessonBsod = new Lesson("FUN: Fake bsod", _runLessonBsod);
+    Lesson* lessonBsod = new Lesson("FUN: Fake bsod", _runLessonBsod, false);
     LessonManager::addLesson(lessonBsod);
 }

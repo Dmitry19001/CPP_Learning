@@ -7,18 +7,18 @@
 #include <iostream>
 #include "utils.h"
 
-using namespace std;
-
 class LessonManager {
 public:
     // Add a lesson to the collection
     static void addLesson(Lesson* lesson) {
         lessons.push_back(lesson);
-        printWithDelay(lesson->getName() + " loaded successfully\n", 5);
+        if (lesson->getIsVisible()) {
+            printWithDelay(lesson->getName() + " loaded successfully\n", 5);
+        }
     }
 
     // Get all lessons
-    static const vector<Lesson*>& getLessons() {
+    static const std::vector<Lesson*>& getLessons() {
         return lessons;
     }
 
@@ -36,7 +36,7 @@ public:
     }
 
 private:
-    static vector<Lesson*> lessons;
+    static std::vector<Lesson*> lessons;
 };
 
 #endif

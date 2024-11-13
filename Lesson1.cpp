@@ -3,8 +3,6 @@
 #include "LessonManager.h"
 #include "utils.h"
 
-using namespace std;
-
 // Recursive function to get a valid age
 static int _getValidAge() {
     // Do not use self recursion, could cause stack overflow in complex scenarios
@@ -15,18 +13,18 @@ static int _getValidAge() {
 
 // Function to run Lesson 1 logic
 static void _runLesson1() {
-    string name = "Unknown";
+    std::string name = "Unknown";
     int age = 0;
 
     printWithDelay("This is Lesson 1: C++ Basics and Setup\n");
     printWithDelay("Enter your name:\n");
-    cin >> name;
+    std::cin >> name;
 
     // Get a valid age
     age = _getValidAge();
 
     // Construct the greeting message
-    string greeting = "Hello, " + name + "! You are " + to_string(age) + " years old.\n";
+    std::string greeting = "Hello, " + name + "! You are " + std::to_string(age) + " years old.\n";
     printWithDelay(greeting);
 }
 

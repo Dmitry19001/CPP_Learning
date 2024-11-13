@@ -5,19 +5,22 @@
 #include <iostream>
 #include "utils.h"
 
-using namespace std;
-
 class Lesson {
 private:
-    string name;
+    bool isVisible;
+    std::string name;
     void (*execute)();
 
 public:
-    Lesson(const string& lessonName, void (*runMethod)())
-        : name(lessonName), execute(runMethod) {}
+    Lesson(
+        const std::string& lessonName,
+        void (*runMethod)(),
+        bool isVisible = true
+    )
+        : name(lessonName), execute(runMethod), isVisible(isVisible) {}
 
     void run() {
-        cout << "\n\n" << name << endl;
+        std::cout << "\n\n" << name << std::endl;
         if (execute) {
             execute();
         }
@@ -26,8 +29,12 @@ public:
         }
     }
 
-    string getName() const {
+    std::string getName() const {
         return name;
+    }
+
+    bool getIsVisible() const {
+        return isVisible;
     }
 };
 

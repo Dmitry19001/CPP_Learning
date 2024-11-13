@@ -131,7 +131,9 @@
     <ClCompile Include="CPP_Learning.cpp" />
     <ClCompile Include="Lesson1.cpp" />
     <ClCompile Include="Lesson2.cpp" />
+    <ClCompile Include="Lesson3.cpp" />
     <ClCompile Include="utils.cpp" />
+    <ClCompile Include="asciiAnim.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lesson.h" />

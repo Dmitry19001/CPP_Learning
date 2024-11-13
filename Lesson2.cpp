@@ -5,8 +5,6 @@
 #include <iomanip>
 #include <sstream>  // Required for ostringstream
 
-using namespace std;
-
 // Function to run Lesson 2 logic
 static void _runLesson2() {
     int firstInt = getIntInput("Enter the first integer: ");
@@ -16,8 +14,8 @@ static void _runLesson2() {
     bool divisionSuccessful = true;
 
     // Create an ostringstream to format the output
-    ostringstream oss;
-    oss << fixed << setprecision(1);
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(1);
 
     // Add formatted results to the ostringstream
     oss << "Results of Operations:"
@@ -26,7 +24,7 @@ static void _runLesson2() {
         << "\n- " << firstInt << " * " << firstFloat << " = " << (firstInt * firstFloat);
 
     if (secondInt != 0) {
-        oss << fixed << setprecision(6)
+        oss << std::fixed << std::setprecision(6)
             << "\n- " << firstInt << " / " << secondInt << " = " << (static_cast<float>(firstInt) / static_cast<float>(secondInt)); // Fix int value not showing decimals
     }
     else {
